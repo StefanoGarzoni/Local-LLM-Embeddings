@@ -1,46 +1,62 @@
 # Local-LLM-Embeddings
-Local LLM Embeddings estrae testo e immagini, genera embedding localmente, li archivia in SQL e usa un LLM per rispondere alle domande. Trova il contesto con similarità del coseno per un prompt engineering efficace, garantendo privacy e prestazioni senza dipendere dal cloud.
+Local LLM Embeddings extracts text and images, generates embeddings locally, stores them in SQL, and uses an LLM to answer questions. It retrieves context using cosine similarity for effective prompt engineering, ensuring privacy and performance without relying on the cloud.
 
-Local LLM Embeddings
-Un framework per gestire embedding e ricerca vettoriale in locale con LLM
+------------------
 
-🔍 Introduzione
-Local LLM Embeddings è un progetto che consente di:
+🔍 Introduction  
+Local LLM Embeddings is a project that enables:
 
-Estrarre testo e immagini da documenti
-Generare embedding vettoriali localmente
-Archiviare i dati in un database SQL
-Eseguire ricerche basate sulla similarità del coseno
-Ottenere risposte contestualizzate tramite un modello di linguaggio
-Tutto il processo avviene in locale, senza invio di dati a server esterni, garantendo privacy e controllo totale.
+Extracting text and images from documents  
+Generating vector embeddings locally  
+Storing data in an SQL database  
+Performing searches based on cosine similarity  
+Obtaining contextualized answers from a language model  
+The entire process runs locally, with no data sent to external servers, ensuring complete privacy and control.  
 
-🛠️ Funzionalità
-✔ Estrazione Dati – Lettura di testo e immagini da documenti (PDF, immagini, ecc.)
-✔ Generazione Embeddings – Creazione di rappresentazioni vettoriali dei testi
-✔ Database SQL – Archiviazione strutturata degli embedding
-✔ Ricerca Vettoriale – Individuazione dei contesti più rilevanti con similarità del coseno
-✔ Chat con LLM – Risposte migliorate grazie al prompt engineering basato sugli embedding
+------------------
 
-⚙️ Come Funziona?
-1️⃣ Estrazione di Testo e Immagini
-Due script analizzano documenti in vari formati, estraggono testo e immagini, e li pre-processano per la generazione degli embedding.
+🛠️ Features
 
-2️⃣ Creazione degli Embeddings
-Gli embedding vengono generati localmente da un LLM, trasformando il testo in vettori numerici. Questi vettori catturano il significato e la relazione semantica tra le parole.
+✔ Data Extraction – Reads text and images from documents (PDF, images, etc.)
 
-3️⃣ Archiviazione nel Database SQL
-Un altro script normalizza e memorizza gli embedding in un database SQL, rendendoli facilmente accessibili per ricerche future.
+✔ Embedding Generation – Creates vector representations of text
 
-4️⃣ Ricerca Vettoriale e Similarità del Coseno
-Quando l'utente pone una domanda nella chat, viene generato un embedding della query e confrontato con gli embedding memorizzati nel database tramite la similarità del coseno. Questo permette di individuare i contenuti più rilevanti.
+✔ SQL Database – Stores embeddings in a structured manner
 
-5️⃣ Prompt Engineering e Risposta del Modello
-Il contesto trovato viene incluso nel prompt passato al LLM, migliorando la qualità della risposta generata. Questo approccio ottimizza l'efficacia delle risposte senza la necessità di ricerche esterne.
+✔ Vector Search – Finds the most relevant contexts using cosine similarity
 
-🔒 Vantaggi
-✅ Tutto in locale – Nessun rischio di perdita di dati o dipendenza dal cloud
-✅ Maggiore privacy – Nessuna condivisione di documenti sensibili
-✅ Risultati più pertinenti – Grazie alla ricerca vettoriale e al prompt engineering
+✔ Chat with LLM – Improves responses through embedding-based prompt engineering
 
-📧 Contatti
-Per domande o contributi, apri una Issue o contattami su GitHub! 🚀
+------------------
+
+⚙️ How It Works?
+
+1️⃣ Text and Image Extraction  
+Two scripts analyze documents in various formats, extract text and images, and pre-process them for embedding generation.
+
+2️⃣ Embedding Creation  
+Embeddings are generated locally by an LLM, converting text into numerical vectors. These vectors capture meaning and semantic relationships between words.
+
+3️⃣ Storage in SQL Database  
+Another script normalizes and stores the embeddings in an SQL database, making them easily accessible for future searches.
+
+4️⃣ Vector Search and Cosine Similarity  
+When a user asks a question in the chat, an embedding of the query is generated and compared with stored embeddings using cosine similarity. This identifies the most relevant content.
+
+5️⃣ Prompt Engineering and Model Response  
+The retrieved context is included in the prompt sent to the LLM, enhancing the quality of the generated response. This approach optimizes answer accuracy without external searches.
+
+------------------
+
+🔒 Benefits
+
+✅ Fully Local – No risk of data loss or cloud dependency
+
+✅ Increased Privacy – No sensitive document sharing
+
+✅ More Relevant Results – Thanks to vector search and prompt engineering
+
+------------------
+
+📧 Contact  
+For questions or contributions, open an Issue or contact me on GitHub! 🚀
