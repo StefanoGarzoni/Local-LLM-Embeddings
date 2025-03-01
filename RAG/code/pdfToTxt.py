@@ -1,3 +1,4 @@
+#Attention to the correct paths in the code below.
 import fitz 
 import io
 from PIL import Image
@@ -6,12 +7,12 @@ import os
 import glob
 import shutil
 
-output_folder = '/home/stefano/emb/Email/RAG/extracted_images'
-txt_folder='/home/stefano/emb/Email/RAG/pdfTOtxt'
-folder_path = '/home/stefano/emb/Email/RAG/pdf' 
+output_folder = 'path to the folder where the images will be extracted'
+txt_folder='path to the folder where the txt files will be saved'
+folder_path = 'path to the folder containing the pdf files' 
 
 def clear_folder():
-    folder_path = '/home/stefano/emb/Email/RAG/extracted_images'  
+    folder_path = 'path to the folder where the images will be extracted'  
     for filename in os.listdir(folder_path):
         file_path = os.path.join(folder_path, filename)
         try:
@@ -73,8 +74,7 @@ def create_pagetxt(pdf_path,all_pages_elements):
         if "image" in elements:
             for i in elements:
                 if i=="image":
-                    #print(f"extracted_images/image_page{page_num+1}_{img_index}.jpeg")
-                    text=extract_text_from_image(f"/home/stefano/emb/Email/RAG/extracted_images/image_page{page_num+1}_{img_index}.jpeg")
+                    text=extract_text_from_image(f"Support folder path for temporary image saving{page_num+1}_{img_index}.jpeg")
                     img_index+=1
                 else:
                     page = document.load_page(page_num)
@@ -105,7 +105,7 @@ def extract_images_from_pdf(pdf_path, output_folder):
             xref = img[0]
             base_image = document.extract_image(xref)
             image_bytes = base_image["image"]
-            #image_ext = base_image["ext"]
+
             image_ext= "jpeg"
             image = Image.open(io.BytesIO(image_bytes))
             

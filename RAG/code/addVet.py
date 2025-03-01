@@ -4,13 +4,13 @@ import glob
 import pymssql
 
 i=0
-server = "192.168.7.226\\SQLEXPRESS"
-database = "LlmMail" 
-username = "stefano"
-password = "Fenix123!"
-queryDoc = "INSERT INTO tblDocumenti (Testo) VALUES (%s);" 
-queryVet= "INSERT INTO tblEmb (Vett, IduDocumenti) VALUES (%s, %d);" 
-queryIdu="SELECT MAX(IduDocumenti) FROM tblDocumenti;"
+server = "dbIP"
+database = "dbName" 
+username = "username"
+password = "password"
+queryDoc = "INSERT INTO tblDocuments (Text) VALUES (%s);" 
+queryVet= "INSERT INTO tblEmbeddings (Vector, IdDocument) VALUES (%s, %d);" 
+queryIdu="SELECT MAX(IdDocument) FROM tblDocuments;"
 
 def read_all_txt_files_in_folder(folder_path):
     documents = []
@@ -23,8 +23,7 @@ def read_all_txt_files_in_folder(folder_path):
             documents.append(content)
     return documents
 
-documents = read_all_txt_files_in_folder("/home/stefano/emb/Email/RAG/pdfTOtxt")
-
+documents = read_all_txt_files_in_folder("path to the folder containing the files")
 
 conn = pymssql.connect(server=server, user=username, password=password, database=database)
 cursor = conn.cursor()
@@ -36,7 +35,7 @@ for doc in documents:
         conn.commit()
     
     except Exception as e:
-        print(f"Errore durante l'esecuzione della query: {e}")
+        print(f"Error during query execution: {e}")
         conn.rollback()
         conn.close()
 
@@ -50,7 +49,7 @@ try:
     value = row[0]
 
 except Exception as e:
-    print(f"Errore durante l'esecuzione della query: {e}")
+    print(f"Error during query execution: {e}")
     value=1
     conn.rollback()
 
@@ -59,8 +58,7 @@ finally:
 
 value=value-i+1
 
-#model='mxbai-embed-large'
-embeddings = [ollama.embeddings(model='llamaemb', prompt=doc) for doc in documents]
+embeddings = [ollama.embeddings(model='model', prompt=doc) for doc in documents]
 vector_embeddings = [embedding['embedding'] for embedding in embeddings]
 
 conn = pymssql.connect(server=server, user=username, password=password, database=database)
@@ -69,9 +67,9 @@ for vet in vector_embeddings:
     try:
         cursor.execute(queryVet,(str(vet), value))
         conn.commit()
-        #print("inserito")
+
     except Exception as e:
-        print(f"Errore durante l'esecuzione della query: {e}")
+        print(f"Error during query execution: {e}")
         conn.rollback()
         conn.close()
     
