@@ -58,8 +58,8 @@ The retrieved context is included in the prompt sent to the LLM, enhancing the q
 
 ------------------
 
-- NOTE:  
-This code can only be used and tested via CLI, if you are interested in a GUI interface that integrates these features and many others that can be used for your company, contact me privately
+NOTE:  
+- This code can only be used and tested via CLI, if you are interested in a GUI interface that integrates these features and many others that can be used for your company, contact me privately
 
 ------------------
 📧 Contact  
