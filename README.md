@@ -1,5 +1,5 @@
 # Local-LLM-Embeddings
-Local LLM Embeddings extracts text and images from PDF, generates embeddings locally, stores them in SQL, and uses an LLM to answer questions. It retrieves context using cosine similarity for effective prompt engineering, ensuring privacy and performance without relying on the cloud.
+Local LLM Embeddings extracts text and images from PDF, generates embeddings locally, stores them in SQL db, and uses an LLM to answer questions. It retrieves context using cosine similarity for effective prompt engineering, ensuring privacy and performance without relying on the cloud.
 
 ------------------
 
